@@ -36,14 +36,14 @@ let currentHue = 0;
 let currentSaturation = 80;
 let currentValue = 80;
 
-// 테마 변경 감지 및 처리
+// Theme change detection and handling
 function initializeThemeWatcher() {
   const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
   
-  // 초기 테마 적용
+  // Apply initial theme
   updateTheme(darkModeQuery.matches);
   
-  // 테마 변경 감지
+  // Detect theme change
   darkModeQuery.addEventListener('change', (e) => {
     updateTheme(e.matches);
   });
@@ -395,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize theme watcher
   initializeThemeWatcher();
   
-  // 페이지 로드 완료 후 transition 활성화
+  // Enable transition after page load
   setTimeout(() => {
     document.body.classList.remove('preload');
   }, 50);
