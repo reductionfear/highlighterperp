@@ -1,6 +1,12 @@
 // Default colors removed - users start with an empty color palette
 const COLORS = [];
 
+// Maximum number of custom colors allowed
+const MAX_CUSTOM_COLORS = 20;
+
+// Legacy command names for first 5 color positions (for backwards compatibility with keyboard shortcuts)
+const LEGACY_COMMAND_NAMES = ['highlight_yellow', 'highlight_green', 'highlight_blue', 'highlight_pink', 'highlight_orange'];
+
 // Cross-browser compatibility - use chrome API in Chrome, browser API in Firefox
 const browserAPI = (() => {
   if (typeof browser !== 'undefined') {
@@ -113,8 +119,7 @@ async function createOrUpdateContextMenus() {
     // First 5 positions map to the original highlight_yellow, etc. shortcuts
     // Positions 6-10 map to highlight_custom_1 through highlight_custom_5
     if (i < 5) {
-      const legacyCommands = ['highlight_yellow', 'highlight_green', 'highlight_blue', 'highlight_pink', 'highlight_orange'];
-      commandName = legacyCommands[i];
+      commandName = LEGACY_COMMAND_NAMES[i];
     } else if (i < 10) {
       commandName = `highlight_custom_${i - 4}`;
     }
@@ -277,11 +282,11 @@ browserAPI.commands.onCommand.addListener(async (command) => {
       case 'highlight_custom_3':
       case 'highlight_custom_4':
       case 'highlight_custom_5':
-        // Extract custom color slot number (1-5) and map to positions 6-10
+        // Extract custom color slot number (1-5) and map to positions 6-10 (indices 5-9)
         const slotNum = parseInt(command.replace('highlight_custom_', ''));
-        const colorIndex = 4 + slotNum; // Maps to positions 6-10 (index 5-9)
-        if (currentColors.length >= colorIndex) {
-          targetColor = currentColors[colorIndex - 1]?.color;
+        const colorIndex = 5 + slotNum - 1; // Maps to indices 5-9 (positions 6-10)
+        if (currentColors.length > colorIndex) {
+          targetColor = currentColors[colorIndex]?.color;
         }
         break;
     }
@@ -426,9 +431,9 @@ browserAPI.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         const stored = await browserAPI.storage.local.get(['customColors']);
         let customColors = stored.customColors || [];
         
-        // Check if maximum color limit (20) is reached
-        if (customColors.length >= 20) {
-          debugLog('Maximum color limit (20) reached');
+        // Check if maximum color limit is reached
+        if (customColors.length >= MAX_CUSTOM_COLORS) {
+          debugLog(`Maximum color limit (${MAX_CUSTOM_COLORS}) reached`);
           sendResponse({ success: false, error: 'Maximum color limit reached', colors: currentColors });
           return;
         }
