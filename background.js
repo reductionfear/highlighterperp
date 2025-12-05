@@ -4,8 +4,8 @@ const COLORS = [];
 // Maximum number of custom colors allowed
 const MAX_CUSTOM_COLORS = 20;
 
-// Legacy command names for first 5 color positions (for backwards compatibility with keyboard shortcuts)
-const LEGACY_COMMAND_NAMES = ['highlight_yellow', 'highlight_green', 'highlight_blue', 'highlight_pink', 'highlight_orange'];
+// Command names for first 5 color positions (matching manifest.json)
+const COMMAND_NAMES = ['highlight_custom_1', 'highlight_custom_2', 'highlight_custom_3', 'highlight_custom_4', 'highlight_custom_5'];
 
 // Cross-browser compatibility - use chrome API in Chrome, browser API in Firefox
 const browserAPI = (() => {
@@ -116,12 +116,9 @@ async function createOrUpdateContextMenus() {
     let commandName = '';
     
     // Map color position to keyboard shortcuts
-    // First 5 positions map to the original highlight_yellow, etc. shortcuts
-    // Positions 6-10 map to highlight_custom_1 through highlight_custom_5
+    // First 5 positions map to highlight_custom_1 through highlight_custom_5
     if (i < 5) {
-      commandName = LEGACY_COMMAND_NAMES[i];
-    } else if (i < 10) {
-      commandName = `highlight_custom_${i - 4}`;
+      commandName = COMMAND_NAMES[i];
     }
     
     const shortcutDisplay = commandShortcuts[commandName] || '';
@@ -245,50 +242,13 @@ browserAPI.commands.onCommand.addListener(async (command) => {
   if (activeTab) {
     let targetColor = null;
     // Determine color based on shortcut
-    // Since default colors are removed, shortcuts map to color positions in currentColors
-    switch (command) {
-      case 'highlight_yellow':
-        // Maps to position 1 (first color)
-        if (currentColors.length >= 1) {
-          targetColor = currentColors[0]?.color;
-        }
-        break;
-      case 'highlight_green':
-        // Maps to position 2 (second color)
-        if (currentColors.length >= 2) {
-          targetColor = currentColors[1]?.color;
-        }
-        break;
-      case 'highlight_blue':
-        // Maps to position 3 (third color)
-        if (currentColors.length >= 3) {
-          targetColor = currentColors[2]?.color;
-        }
-        break;
-      case 'highlight_pink':
-        // Maps to position 4 (fourth color)
-        if (currentColors.length >= 4) {
-          targetColor = currentColors[3]?.color;
-        }
-        break;
-      case 'highlight_orange':
-        // Maps to position 5 (fifth color)
-        if (currentColors.length >= 5) {
-          targetColor = currentColors[4]?.color;
-        }
-        break;
-      case 'highlight_custom_1':
-      case 'highlight_custom_2':
-      case 'highlight_custom_3':
-      case 'highlight_custom_4':
-      case 'highlight_custom_5':
-        // Extract custom color slot number (1-5) and map to positions 6-10 (indices 5-9)
-        const slotNum = parseInt(command.replace('highlight_custom_', ''));
-        const colorIndex = 5 + slotNum - 1; // Maps to indices 5-9 (positions 6-10)
-        if (currentColors.length > colorIndex) {
-          targetColor = currentColors[colorIndex]?.color;
-        }
-        break;
+    // highlight_custom_1 through highlight_custom_5 map to color positions 1-5 (indices 0-4)
+    if (command.startsWith('highlight_custom_')) {
+      const slotNum = parseInt(command.replace('highlight_custom_', ''));
+      const colorIndex = slotNum - 1; // Maps to indices 0-4 (positions 1-5)
+      if (slotNum >= 1 && slotNum <= 5 && currentColors.length > colorIndex) {
+        targetColor = currentColors[colorIndex]?.color;
+      }
     }
 
     // Process color highlight command
