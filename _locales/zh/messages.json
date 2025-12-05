@@ -1,0 +1,255 @@
+{  "extensionName": {
+    "message": "Marks: 文本高亮器"
+  },
+  "extensionDescription": {
+    "message": "一个可以在网页上选择文本并用颜色标记的扩展程序"
+  },
+  "highlightText": {
+    "message": "高亮文本"
+  },
+  "removeHighlight": {
+    "message": "移除高亮"
+  },
+  "yellowColor": {
+    "message": "黄色"
+  },
+  "greenColor": {
+    "message": "绿色"
+  },
+  "blueColor": {
+    "message": "蓝色"
+  },
+  "pinkColor": {
+    "message": "粉色"
+  },
+  "orangeColor": {
+    "message": "橙色"
+  },
+  "deleteHighlight": {
+    "message": "删除高亮"
+  },
+  "highlightWithYellow": {
+    "message": "用黄色高亮"
+  },
+  "highlightWithGreen": {
+    "message": "用绿色高亮"
+  },
+  "highlightWithBlue": {
+    "message": "用蓝色高亮"
+  },
+  "highlightWithPink": {
+    "message": "用粉色高亮"
+  },
+  "highlightWithOrange": {
+    "message": "用橙色高亮"
+  },
+  "popupTitle": {
+    "message": "文本高亮器"
+  },
+  "popupDescription": {
+    "message": "在网页上选择文本后，点击鼠标右键即可高亮显示。"
+  },
+  "exportAll": {
+    "message": "导出"
+  },
+  "importHighlights": {
+    "message": "导入"
+  },
+  "importHighlightsTooltip": {
+    "message": "从JSON文件导入高亮"
+  },
+  "exportAllTooltip": {
+    "message": "将所有高亮导出为JSON文件"
+  },
+  "importOverwriteConfirm": {
+    "message": "部分页面已存在高亮。相关页面的现有高亮将被删除并用导入的数据替换。是否继续？"
+  },
+  "importInvalidFormat": {
+    "message": "导入文件格式无效。"
+  },
+  "importSuccess": {
+    "message": "导入完成。"
+  },
+  "currentPageHighlights": {
+    "message": "当前页面高亮"
+  },
+  "noHighlights": {
+    "message": "当前页面没有高亮的文本。"
+  },
+  "clearAllHighlights": {
+    "message": "清除所有高亮"
+  },
+  "viewAllPages": {
+    "message": "已高亮页面列表"
+  },
+  "showMinimap": {
+    "message": "显示小地图"
+  },
+  "showControlsOnSelection": {
+    "message": "选择文本时显示控制UI"
+  },
+  "confirmClearAll": {
+    "message": "确定要删除当前页面的所有高亮吗？"
+  },
+  "pagesListTitle": {
+    "message": "已高亮页面列表"
+  },
+  "noPagesFound": {
+    "message": "没有找到已高亮的页面。"
+  },
+  "highlightCount": {
+    "message": "高亮数量"
+  },
+  "lastUpdated": {
+    "message": "最后更新"
+  },
+  "showDetails": {
+    "message": "显示详情"
+  },
+  "hideDetails": {
+    "message": "隐藏详情"
+  },
+  "openPage": {
+    "message": "打开页面"
+  },
+  "deletePage": {
+    "message": "删除"
+  },
+  "confirmDeletePage": {
+    "message": "确定要删除此页面的所有高亮吗？"
+  },
+  "noTitle": {
+    "message": "（无标题）"
+  },
+  "unknown": {
+    "message": "未知"
+  },
+  "deleteAllPages": {
+    "message": "删除所有页面"
+  },
+  "confirmDeleteAllPages": {
+    "message": "确定要删除所有已高亮的页面吗？"
+  },
+  "deleteCustomColors": {
+    "message": "删除自定义颜色"
+  },
+  "confirmDeleteCustomColors": {
+    "message": "确定要删除所有自定义颜色吗？"
+  },
+  "deletedCustomColors": {
+    "message": "已删除自定义颜色。"
+  },
+  "addColor": {
+    "message": "添加颜色"
+  },
+  "refresh": {
+    "message": "刷新",
+    "description": "高亮页面列表刷新按钮文本"
+  },
+  "customColor": {
+    "message": "自定义颜色"
+  },
+  "noCustomColorsToDelete": {
+    "message": "没有可删除的自定义颜色。"
+  },
+  "selectColor": {
+    "message": "选择颜色"
+  },
+  "apply": {
+    "message": "应用"
+  },
+  "cancel": {
+    "message": "取消"
+  },
+  "ok": {
+    "message": "确定"
+  },
+  "searchTooltip": {
+    "message": "搜索高亮内容"
+  },
+  "searchPlaceholder": {
+    "message": "搜索..."
+  },
+  "sortNewestFirst": {
+    "message": "按时间排序（最新优先）"
+  },
+  "sortOldestFirst": {
+    "message": "按时间排序（最旧优先）"
+  },
+  "shortcutsSettingsTitle": {
+    "message": "键盘快捷键设置"
+  },
+  "shortcutsDescription": {
+    "message": "自定义用不同颜色突出显示文本的键盘快捷键。"
+  },
+  "chromeShortcutsInfo": {
+    "message": "在Chrome中自定义键盘快捷键：<br/>1. 点击下面的"打开Chrome快捷键"按钮，或<br/>2. 导航到 <strong>chrome://extensions/shortcuts</strong><br/>3. 找到"Marks: Text Highlighter"并自定义您的快捷键"
+  },
+  "firefoxShortcutsInfo": {
+    "message": "在Firefox中自定义键盘快捷键：<br/>1. 导航到 <strong>about:addons</strong><br/>2. 点击齿轮图标并选择"管理扩展快捷键"<br/>3. 找到"Marks: Text Highlighter"并自定义您的快捷键"
+  },
+  "openChromeShortcuts": {
+    "message": "打开Chrome快捷键"
+  },
+  "backToPopup": {
+    "message": "返回弹窗"
+  },
+  "notSet": {
+    "message": "未设置"
+  },
+  "chromeUpdateRequired": {
+    "message": "您的Chrome版本可能不支持程序化快捷键更新。请使用chrome://extensions/shortcuts自定义快捷键。"
+  },
+  "keyboardShortcuts": {
+  },
+  "highlightWithCustom1": {
+    "message": "Highlight with Custom Color 1"
+  },
+  "highlightWithCustom2": {
+    "message": "Highlight with Custom Color 2"
+  },
+  "highlightWithCustom3": {
+    "message": "Highlight with Custom Color 3"
+  },
+  "highlightWithCustom4": {
+    "message": "Highlight with Custom Color 4"
+  },
+  "highlightWithCustom5": {
+    "message": "Highlight with Custom Color 5"
+    "message": "键盘快捷键"
+  }
+  },
+  "colorPickerTitle": {
+    "message": "Custom Color Picker"
+  },
+  "createCustomColor": {
+    "message": "Create Custom Color"
+  },
+  "redChannel": {
+    "message": "Red"
+  },
+  "greenChannel": {
+    "message": "Green"
+  },
+  "blueChannel": {
+    "message": "Blue"
+  },
+  "addColorButton": {
+    "message": "Add This Color"
+  },
+  "resetButton": {
+    "message": "Reset"
+  },
+  "savedCustomColors": {
+    "message": "Your Custom Colors"
+  },
+  "noCustomColorsYet": {
+    "message": "No custom colors saved yet. Create one using the controls on the left!"
+  },
+  "presetColors": {
+    "message": "Extreme Preset Colors"
+  },
+  "manageCustomColors": {
+    "message": "Manage Custom Colors"
+  }
+}

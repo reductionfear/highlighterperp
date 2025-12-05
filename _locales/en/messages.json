@@ -1,0 +1,254 @@
+{  "extensionName": {
+    "message": "Marks: Text Highlighter"
+  },
+  "extensionDescription": {
+    "message": "Extension to select text on web pages and mark with colors"
+  },
+  "highlightText": {
+    "message": "Highlight Text"
+  },
+  "removeHighlight": {
+    "message": "Remove Highlight"
+  },
+  "yellowColor": {
+    "message": "Yellow"
+  },
+  "greenColor": {
+    "message": "Green"
+  },
+  "blueColor": {
+    "message": "Blue"
+  },
+  "pinkColor": {
+    "message": "Pink"
+  },
+  "orangeColor": {
+    "message": "Orange"
+  },
+  "deleteHighlight": {
+    "message": "Delete Highlight"
+  },
+  "highlightWithYellow": {
+    "message": "Highlight with Yellow"
+  },
+  "highlightWithGreen": {
+    "message": "Highlight with Green"
+  },
+  "highlightWithBlue": {
+    "message": "Highlight with Blue"
+  },
+  "highlightWithPink": {
+    "message": "Highlight with Pink"
+  },
+  "highlightWithOrange": {
+    "message": "Highlight with Orange"
+  },
+  "popupTitle": {
+    "message": "Text Highlighter"
+  },
+  "popupDescription": {
+    "message": "Select text on web pages and right-click to highlight."
+  },
+  "exportAll": {
+    "message": "Export"
+  },
+  "importHighlights": {
+    "message": "Import"
+  },
+  "importHighlightsTooltip": {
+    "message": "Import highlights from JSON file"
+  },
+  "exportAllTooltip": {
+    "message": "Export all highlights to JSON file"
+  },
+  "importOverwriteConfirm": {
+    "message": "Some pages already have highlights. Existing highlights for those pages will be deleted and replaced with imported data. Proceed?"
+  },
+  "importInvalidFormat": {
+    "message": "Invalid import file format."
+  },
+  "importSuccess": {
+    "message": "Import completed."
+  },
+  "currentPageHighlights": {
+    "message": "Current Page Highlights"
+  },
+  "noHighlights": {
+    "message": "No highlighted text on this page."
+  },
+  "clearAllHighlights": {
+    "message": "Clear All Highlights"
+  },
+  "viewAllPages": {
+    "message": "Highlighted Pages List"
+  },
+  "showMinimap": {
+    "message": "Show Minimap"
+  },
+  "showControlsOnSelection": {
+    "message": "Show Control UI on Text Selection"
+  },
+  "confirmClearAll": {
+    "message": "Really delete all highlights on this page?"
+  },
+  "pagesListTitle": {
+    "message": "Highlighted Pages List"
+  },
+  "noPagesFound": {
+    "message": "No highlighted pages found."
+  },
+  "highlightCount": {
+    "message": "Highlights"
+  },
+  "lastUpdated": {
+    "message": "Last Updated"
+  },
+  "showDetails": {
+    "message": "Show Details"
+  },
+  "hideDetails": {
+    "message": "Hide"
+  },
+  "openPage": {
+    "message": "Open Page"
+  },
+  "deletePage": {
+    "message": "Delete"
+  },
+  "confirmDeletePage": {
+    "message": "Delete all highlights for this page?"
+  },
+  "noTitle": {
+    "message": "(No title)"
+  },
+  "unknown": {
+    "message": "Unknown"
+  },
+  "deleteAllPages": {
+    "message": "Delete All Pages"
+  },
+  "confirmDeleteAllPages": {
+    "message": "Delete ALL highlighted pages?"
+  },
+  "deleteCustomColors": {
+    "message": "Delete Custom Colors"
+  },
+  "confirmDeleteCustomColors": {
+    "message": "Delete ALL custom colors?"
+  },
+  "deletedCustomColors": {
+    "message": "Custom colors deleted."
+  },
+  "addColor": {
+    "message": "Add Color"
+  },
+  "refresh": {
+    "message": "Refresh",
+    "description": "Button text for refreshing the highlighted pages list"
+  },
+  "customColor": {
+    "message": "Custom Color"
+  },
+  "noCustomColorsToDelete": {
+    "message": "No custom colors to delete."
+  },
+  "selectColor": {
+    "message": "Select Color"
+  },
+  "apply": {
+    "message": "Apply"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "ok": {
+    "message": "OK"
+  },
+  "searchTooltip": {
+    "message": "Search highlights"
+  },
+  "searchPlaceholder": {
+    "message": "Search..."
+  },
+  "sortNewestFirst": {
+    "message": "Sort by time (newest first)"
+  },
+  "sortOldestFirst": {
+    "message": "Sort by time (oldest first)"
+  },
+  "shortcutsSettingsTitle": {
+    "message": "Keyboard Shortcuts Settings"
+  },
+  "shortcutsDescription": {
+    "message": "Customize keyboard shortcuts for highlighting text with different colors."
+  },
+  "chromeShortcutsInfo": {
+    "message": "To customize keyboard shortcuts in Chrome:<br/>1. Click the \"Open Chrome Shortcuts\" button below, or<br/>2. Navigate to <strong>chrome://extensions/shortcuts</strong><br/>3. Find \"Marks: Text Highlighter\" and customize your shortcuts"
+  },
+  "firefoxShortcutsInfo": {
+    "message": "To customize keyboard shortcuts in Firefox:<br/>1. Navigate to <strong>about:addons</strong><br/>2. Click the gear icon and select \"Manage Extension Shortcuts\"<br/>3. Find \"Marks: Text Highlighter\" and customize your shortcuts"
+  },
+  "openChromeShortcuts": {
+    "message": "Open Chrome Shortcuts"
+  },
+  "backToPopup": {
+    "message": "Back to Popup"
+  },
+  "notSet": {
+    "message": "Not set"
+  },
+  "chromeUpdateRequired": {
+    "message": "Your Chrome version may not support programmatic shortcut updates. Please use chrome://extensions/shortcuts to customize shortcuts."
+  },
+  "keyboardShortcuts": {
+    "message": "Keyboard Shortcuts"
+  },
+  "highlightWithCustom1": {
+    "message": "Highlight with Custom Color 1"
+  },
+  "highlightWithCustom2": {
+    "message": "Highlight with Custom Color 2"
+  },
+  "highlightWithCustom3": {
+    "message": "Highlight with Custom Color 3"
+  },
+  "highlightWithCustom4": {
+    "message": "Highlight with Custom Color 4"
+  },
+  "highlightWithCustom5": {
+    "message": "Highlight with Custom Color 5"
+  },
+  "colorPickerTitle": {
+    "message": "Custom Color Picker"
+  },
+  "createCustomColor": {
+    "message": "Create Custom Color"
+  },
+  "redChannel": {
+    "message": "Red"
+  },
+  "greenChannel": {
+    "message": "Green"
+  },
+  "blueChannel": {
+    "message": "Blue"
+  },
+  "addColorButton": {
+    "message": "Add This Color"
+  },
+  "resetButton": {
+    "message": "Reset"
+  },
+  "savedCustomColors": {
+    "message": "Your Custom Colors"
+  },
+  "noCustomColorsYet": {
+    "message": "No custom colors saved yet. Create one using the controls on the left!"
+  },
+  "presetColors": {
+    "message": "Extreme Preset Colors"
+  },
+  "manageCustomColors": {
+    "message": "Manage Custom Colors"
+  }
+}

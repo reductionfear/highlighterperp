@@ -1,0 +1,252 @@
+{  "extensionName": {
+    "message": "Marks: Resaltador de Texto"
+  },
+  "extensionDescription": {
+    "message": "Extensión para seleccionar texto en páginas web y marcar con colores"
+  },
+  "highlightText": {
+    "message": "Resaltar Texto"
+  },
+  "removeHighlight": {
+    "message": "Quitar Resaltado"
+  },
+  "yellowColor": {
+    "message": "Amarillo"
+  },
+  "greenColor": {
+    "message": "Verde"
+  },
+  "blueColor": {
+    "message": "Azul"
+  },
+  "pinkColor": {
+    "message": "Rosa"
+  },
+  "orangeColor": {
+    "message": "Naranja"
+  },
+  "deleteHighlight": {
+    "message": "Eliminar Resaltado"
+  },
+  "highlightWithYellow": {
+    "message": "Resaltar con Amarillo"
+  },
+  "highlightWithGreen": {
+    "message": "Resaltar con Verde"
+  },
+  "highlightWithBlue": {
+    "message": "Resaltar con Azul"
+  },
+  "highlightWithPink": {
+    "message": "Resaltar con Rosa"
+  },
+  "highlightWithOrange": {
+    "message": "Resaltar con Naranja"
+  },
+  "popupTitle": {
+    "message": "Resaltador de Texto"
+  },
+  "popupDescription": {
+    "message": "Selecciona texto en páginas web y haz clic derecho para resaltar."
+  },
+  "exportAll": {
+    "message": "Exportar"
+  },
+  "importHighlights": {
+    "message": "Importar"
+  },
+  "importHighlightsTooltip": {
+    "message": "Importar resaltados desde archivo JSON"
+  },
+  "exportAllTooltip": {
+    "message": "Exportar todos los resaltados a archivo JSON"
+  },
+  "importOverwriteConfirm": {
+    "message": "Algunas páginas ya tienen resaltados. Los resaltados existentes para esas páginas serán eliminados y reemplazados con los datos importados. ¿Continuar?"
+  },
+  "importInvalidFormat": {
+    "message": "Formato de archivo de importación inválido."
+  },
+  "importSuccess": {
+    "message": "Importación completada."
+  },
+  "currentPageHighlights": {
+    "message": "Resaltados de Página Actual"
+  },
+  "noHighlights": {
+    "message": "No hay texto resaltado en esta página."
+  },
+  "clearAllHighlights": {
+    "message": "Limpiar Todos los Resaltados"
+  },
+  "viewAllPages": {
+    "message": "Lista de Páginas Resaltadas"
+  },
+  "showMinimap": {
+    "message": "Mostrar Minimapa"
+  },
+  "confirmClearAll": {
+    "message": "¿Realmente eliminar todos los resaltados en esta página?"
+  },
+  "pagesListTitle": {
+    "message": "Lista de Páginas Resaltadas"
+  },
+  "noPagesFound": {
+    "message": "No se encontraron páginas resaltadas."
+  },
+  "highlightCount": {
+    "message": "Resaltados"
+  },
+  "lastUpdated": {
+    "message": "Última Actualización"
+  },
+  "showDetails": {
+    "message": "Mostrar Detalles"
+  },
+  "hideDetails": {
+    "message": "Ocultar"
+  },
+  "openPage": {
+    "message": "Abrir Página"
+  },
+  "deletePage": {
+    "message": "Eliminar"
+  },
+  "confirmDeletePage": {
+    "message": "¿Eliminar todos los resaltados para esta página?"
+  },
+  "noTitle": {
+    "message": "(Sin título)"
+  },
+  "unknown": {
+    "message": "Desconocido"
+  },
+  "deleteAllPages": {
+    "message": "Eliminar Todas las Páginas"
+  },
+  "confirmDeleteAllPages": {
+    "message": "¿Eliminar TODAS las páginas resaltadas?"
+  },
+  "deleteCustomColors": {
+    "message": "Eliminar Colores Personalizados"
+  },
+  "confirmDeleteCustomColors": {
+    "message": "¿Eliminar TODOS los colores personalizados?"
+  },
+  "deletedCustomColors": {
+    "message": "Colores personalizados eliminados."
+  },
+  "addColor": {
+    "message": "Agregar Color"
+  },
+  "refresh": {
+    "message": "Actualizar",
+    "description": "Texto del botón para actualizar la lista de páginas resaltadas"
+  },
+  "customColor": {
+    "message": "Color Personalizado"
+  },
+  "noCustomColorsToDelete": {
+    "message": "No hay colores personalizados para eliminar."
+  },
+  "selectColor": {
+    "message": "Seleccionar Color"
+  },
+  "apply": {
+    "message": "Aplicar"
+  },
+  "cancel": {
+    "message": "Cancelar"
+  },
+  "ok": {
+    "message": "Aceptar"
+  },
+  "searchTooltip": {
+    "message": "Buscar resaltados"
+  },
+  "searchPlaceholder": {
+    "message": "Buscar..."
+  },
+  "sortNewestFirst": {
+    "message": "Ordenar por tiempo (más reciente primero)"
+  },
+  "sortOldestFirst": {
+    "message": "Ordenar por tiempo (más antiguo primero)"
+  },
+  "shortcutsSettingsTitle": {
+    "message": "Configuración de Atajos de Teclado"
+  },
+  "shortcutsDescription": {
+    "message": "Personaliza los atajos de teclado para resaltar texto con diferentes colores."
+  },
+  "chromeShortcutsInfo": {
+    "message": "Para personalizar los atajos de teclado en Chrome:<br/>1. Haz clic en el botón \"Abrir Atajos de Chrome\" a continuación, o<br/>2. Navega a <strong>chrome://extensions/shortcuts</strong><br/>3. Encuentra \"Marks: Text Highlighter\" y personaliza tus atajos"
+  },
+  "firefoxShortcutsInfo": {
+    "message": "Para personalizar los atajos de teclado en Firefox:<br/>1. Navega a <strong>about:addons</strong><br/>2. Haz clic en el icono de engranaje y selecciona \"Administrar atajos de extensión\"<br/>3. Encuentra \"Marks: Text Highlighter\" y personaliza tus atajos"
+  },
+  "openChromeShortcuts": {
+    "message": "Abrir Atajos de Chrome"
+  },
+  "backToPopup": {
+    "message": "Volver al Popup"
+  },
+  "notSet": {
+    "message": "No establecido"
+  },
+  "chromeUpdateRequired": {
+    "message": "Tu versión de Chrome puede no soportar actualizaciones programáticas de atajos. Por favor, usa chrome://extensions/shortcuts para personalizar los atajos."
+  },
+  "keyboardShortcuts": {
+  },
+  "highlightWithCustom1": {
+    "message": "Highlight with Custom Color 1"
+  },
+  "highlightWithCustom2": {
+    "message": "Highlight with Custom Color 2"
+  },
+  "highlightWithCustom3": {
+    "message": "Highlight with Custom Color 3"
+  },
+  "highlightWithCustom4": {
+    "message": "Highlight with Custom Color 4"
+  },
+  "highlightWithCustom5": {
+    "message": "Highlight with Custom Color 5"
+    "message": "Atajos de Teclado"
+  }
+  },
+  "colorPickerTitle": {
+    "message": "Custom Color Picker"
+  },
+  "createCustomColor": {
+    "message": "Create Custom Color"
+  },
+  "redChannel": {
+    "message": "Red"
+  },
+  "greenChannel": {
+    "message": "Green"
+  },
+  "blueChannel": {
+    "message": "Blue"
+  },
+  "addColorButton": {
+    "message": "Add This Color"
+  },
+  "resetButton": {
+    "message": "Reset"
+  },
+  "savedCustomColors": {
+    "message": "Your Custom Colors"
+  },
+  "noCustomColorsYet": {
+    "message": "No custom colors saved yet. Create one using the controls on the left!"
+  },
+  "presetColors": {
+    "message": "Extreme Preset Colors"
+  },
+  "manageCustomColors": {
+    "message": "Manage Custom Colors"
+  }
+}

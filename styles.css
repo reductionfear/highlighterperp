@@ -1,0 +1,509 @@
+.text-highlighter-extension {
+  display: inline;
+  border-radius: 2px;
+  padding: 0 1px;
+  margin: 0 1px;
+  cursor: pointer;
+  position: relative;
+  color: #000;
+}
+
+.text-highlighter-extension:hover,
+.text-highlighter-extension.group-hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.text-highlighter-controls {
+  position: absolute;
+  display: none;
+  align-items: center;
+  z-index: 9999;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 3px 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(.4,1.4,.6,1), transform 0.35s cubic-bezier(.4,1.4,.6,1);
+  /* Firefox color picker positioning fix */
+  contain: layout;
+  isolation: isolate;
+}
+
+.text-highlighter-controls.visible {
+  display: flex;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  animation: pop-in-highlight 0.38s cubic-bezier(.22,1.6,.42,1.01) both;
+}
+
+@keyframes pop-in-highlight {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.text-highlighter-control-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  transition: transform 0.18s cubic-bezier(.4,1.4,.6,1), box-shadow 0.18s cubic-bezier(.4,1.4,.6,1);
+  justify-content: center;
+  margin: 0 2px;
+  cursor: pointer;
+  user-select: none;
+}
+
+@keyframes jelly-bounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.22, 0.89); }
+  45%  { transform: scale(0.97, 1.13); }
+  60%  { transform: scale(1.13, 0.97); }
+  75%  { transform: scale(0.98, 1.07); }
+  100% { transform: scale(1.18, 1.18); }
+}
+
+@keyframes pop-in-new-color {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.text-highlighter-control-button:hover, .text-highlighter-control-button:focus {
+  transform: scale(1.18);
+  z-index: 1;
+}
+
+.text-highlighter-control-button.jelly-animate {
+  animation: jelly-bounce 0.45s cubic-bezier(.22,1.6,.42,1.01);
+  transform: scale(1.18);
+  z-index: 1;
+}
+
+.text-highlighter-control-button.new-color-animate {
+  animation: pop-in-new-color 0.5s cubic-bezier(.22,1.6,.42,1.01);
+}
+
+.delete-highlight {
+  background-color: #ff4444;
+  color: white;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0;
+  /* No font styles needed since SVG is used */
+}
+
+.delete-highlight svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  fill: none;
+}
+
+.add-color-button {
+  background-color: white;
+  border: 1px solid #ccc;
+  color: #999;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0;
+  position: relative;
+}
+
+.add-color-button svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  fill: none;
+}
+
+
+.add-color-button {
+  position: relative;
+}
+
+/* Firefox 커스텀 색상 선택기 */
+.custom-color-picker {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 240px;
+  opacity: 0;
+  transform: scale(0.8) translateY(-10px);
+  animation: pop-out-color-picker 0.3s cubic-bezier(.22,1.6,.42,1.01) forwards;
+}
+
+@keyframes pop-out-color-picker {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-10px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.color-picker-header {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.color-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  margin-bottom: 12px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.color-preset {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.color-preset:hover {
+  border-color: #999;
+  transform: scale(1.1);
+}
+
+/* Metallic effect - adds shine/gradient */
+.color-preset.metallic-effect {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.4) 0%, 
+    transparent 50%, 
+    rgba(0, 0, 0, 0.2) 100%);
+  background-blend-mode: overlay;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Bright effect - adds brightness boost */
+.color-preset.bright-effect {
+  filter: brightness(1.15) saturate(1.3);
+}
+
+.color-preset.bright-effect:hover {
+  filter: brightness(1.25) saturate(1.4);
+}
+
+/* Glow effect - adds glowing shadow */
+.color-preset.glow-effect {
+  box-shadow: 0 0 8px currentColor, inset 0 0 4px rgba(255, 255, 255, 0.3);
+  filter: saturate(1.5);
+}
+
+.color-preset.glow-effect:hover {
+  box-shadow: 0 0 12px currentColor, inset 0 0 6px rgba(255, 255, 255, 0.4);
+  filter: saturate(1.7);
+}
+
+.custom-color-section {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hue-slider-container {
+  width: 100%;
+  height: 12px;
+  position: relative;
+}
+
+.hue-slider {
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(to right, 
+    #ff0000 0%, #ffff00 16.66%, #00ff00 33.33%, 
+    #00ffff 50%, #0000ff 66.66%, #ff00ff 83.33%, #ff0000 100%);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+.hue-handle {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.saturation-value-picker {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent 0%, black 100%),
+              linear-gradient(to right, white 0%, red 100%);
+  border-radius: 4px;
+  cursor: crosshair;
+  position: relative;
+}
+
+.sv-handle {
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.color-preview {
+  width: 40px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  align-self: center;
+}
+
+.color-picker-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.color-picker-apply, .color-picker-close {
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #333;
+  line-height: 1.2;
+}
+
+.color-picker-apply {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.color-picker-apply:hover {
+  background: #0056b3;
+}
+
+.color-picker-close:hover {
+  background: #e0e0e0;
+}
+
+.text-highlighter-color-buttons {
+  display: flex;
+  margin-left: 5px;
+}
+
+.color-button {
+  border: 1px solid #ccc;
+}
+
+.color-button:hover,
+.delete-highlight:hover {
+  transform: scale(1.1);
+}
+
+.text-highlighter-minimap {
+  position: fixed;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 60%;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.3s;
+}
+
+.text-highlighter-minimap:hover {
+  opacity: 1;
+}
+
+.text-highlighter-minimap-marker {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  left: 1px;
+  cursor: pointer;
+  box-sizing: content-box;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s, left 0.2s;
+}
+
+.text-highlighter-minimap-marker.visible {
+  border: 2px solid white;
+  left: -1px;
+}
+
+.text-highlighter-minimap-marker:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.text-highlighter-minimap {
+  opacity: 0.6;
+}
+
+.text-highlighter-minimap:hover {
+  opacity: 1;
+}
+
+.text-highlighter-minimap-marker.visible {
+  border: 2px solid white;
+}
+
+.text-highlighter-minimap-toggle {
+  position: fixed;
+  right: 5px;
+  bottom: 20px;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.text-highlighter-minimap-toggle:hover {
+  transform: scale(1.1);
+}
+
+.text-highlighter-extension.highlight-focus {
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.7),
+    0 0 0 6px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s;
+}
+
+/* Selection controls styles */
+.text-highlighter-selection-icon {
+  position: absolute !important;
+  z-index: 9999 !important;
+  cursor: pointer !important;
+  background-color: white !important;
+  border: 1px solid #ccc !important;
+  border-radius: 20% !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0.7 !important;
+  /* CSS 리셋 */
+  box-sizing: border-box !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: normal !important;
+  line-height: normal !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  margin: 0 !important;
+  outline: none !important;
+  vertical-align: baseline !important;
+  width: 27px !important;
+  height: 27px !important;
+  min-width: 27px !important;
+  min-height: 27px !important;
+  max-width: 27px !important;
+  max-height: 27px !important;
+}
+
+.text-highlighter-selection-icon:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+  opacity: 1 !important; /* Remove transparency on hover */
+}
+
+/* Selection controls reuse existing .text-highlighter-controls styles automatically */
+
+/* Color separator styles */
+.color-separator {
+  width: 1px;
+  height: 22px;
+  background-color: #ccc;
+  margin: 0 3px;
+}
+
+/* Custom color picker positioning */
+.custom-color-picker {
+  position: absolute;
+  z-index: 10000;
+}
+
+/* Selection controls positioning */
+.text-highlighter-selection-controls {
+  position: absolute;
+  z-index: 10000;
+  display: flex;
+}

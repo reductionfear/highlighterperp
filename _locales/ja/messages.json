@@ -1,0 +1,255 @@
+{  "extensionName": {
+    "message": "Marks: テキストハイライター"
+  },
+  "extensionDescription": {
+    "message": "ウェブページのテキストを選択して色付きでマークできる拡張機能"
+  },
+  "highlightText": {
+    "message": "テキストをハイライト"
+  },
+  "removeHighlight": {
+    "message": "ハイライトを削除"
+  },
+  "yellowColor": {
+    "message": "黄色"
+  },
+  "greenColor": {
+    "message": "緑色"
+  },
+  "blueColor": {
+    "message": "青色"
+  },
+  "pinkColor": {
+    "message": "ピンク色"
+  },
+  "orangeColor": {
+    "message": "オレンジ色"
+  },
+  "deleteHighlight": {
+    "message": "ハイライトを削除"
+  },
+  "highlightWithYellow": {
+    "message": "黄色でハイライト"
+  },
+  "highlightWithGreen": {
+    "message": "緑色でハイライト"
+  },
+  "highlightWithBlue": {
+    "message": "青色でハイライト"
+  },
+  "highlightWithPink": {
+    "message": "ピンク色でハイライト"
+  },
+  "highlightWithOrange": {
+    "message": "オレンジ色でハイライト"
+  },
+  "popupTitle": {
+    "message": "テキストハイライター"
+  },
+  "popupDescription": {
+    "message": "ウェブページでテキストを選択し、右クリックでハイライトできます。"
+  },
+  "exportAll": {
+    "message": "エクスポート"
+  },
+  "importHighlights": {
+    "message": "インポート"
+  },
+  "importHighlightsTooltip": {
+    "message": "JSONファイルからハイライトをインポート"
+  },
+  "exportAllTooltip": {
+    "message": "すべてのハイライトをJSONファイルにエクスポート"
+  },
+  "importOverwriteConfirm": {
+    "message": "一部のページには既にハイライトがあります。該当ページの既存ハイライトは削除され、インポートしたデータで上書きされます。続行しますか？"
+  },
+  "importInvalidFormat": {
+    "message": "インポートファイルの形式が正しくありません。"
+  },
+  "importSuccess": {
+    "message": "インポートが完了しました。"
+  },
+  "currentPageHighlights": {
+    "message": "現在のページのハイライト"
+  },
+  "noHighlights": {
+    "message": "このページにはハイライトされたテキストがありません。"
+  },
+  "clearAllHighlights": {
+    "message": "すべてのハイライトを削除"
+  },
+  "viewAllPages": {
+    "message": "ハイライトしたページ一覧"
+  },
+  "showMinimap": {
+    "message": "ミニマップを表示"
+  },
+  "showControlsOnSelection": {
+    "message": "テキスト選択時にコントロールUIを表示"
+  },
+  "confirmClearAll": {
+    "message": "現在のページのすべてのハイライトを削除してよろしいですか？"
+  },
+  "pagesListTitle": {
+    "message": "ハイライトしたページ一覧"
+  },
+  "noPagesFound": {
+    "message": "ハイライトしたページはありません。"
+  },
+  "highlightCount": {
+    "message": "ハイライト数"
+  },
+  "lastUpdated": {
+    "message": "最終更新"
+  },
+  "showDetails": {
+    "message": "詳細を表示"
+  },
+  "hideDetails": {
+    "message": "詳細を隠す"
+  },
+  "openPage": {
+    "message": "ページを開く"
+  },
+  "deletePage": {
+    "message": "削除"
+  },
+  "confirmDeletePage": {
+    "message": "このページのすべてのハイライトを削除してよろしいですか？"
+  },
+  "noTitle": {
+    "message": "（タイトルなし）"
+  },
+  "unknown": {
+    "message": "不明"
+  },
+  "deleteAllPages": {
+    "message": "すべてのページを削除"
+  },
+  "confirmDeleteAllPages": {
+    "message": "すべてのハイライトしたページを削除してよろしいですか？"
+  },
+  "deleteCustomColors": {
+    "message": "カスタムカラーを削除"
+  },
+  "confirmDeleteCustomColors": {
+    "message": "すべてのカスタムカラーを削除しますか？"
+  },
+  "deletedCustomColors": {
+    "message": "カスタムカラーを削除しました。"
+  },
+  "addColor": {
+    "message": "色を追加"
+  },
+  "refresh": {
+    "message": "更新",
+    "description": "ハイライトしたページ一覧の更新ボタンのテキスト"
+  },
+  "customColor": {
+    "message": "カスタムカラー"
+  },
+  "noCustomColorsToDelete": {
+    "message": "削除するカスタムカラーがありません。"
+  },
+  "selectColor": {
+    "message": "色を選択"
+  },
+  "apply": {
+    "message": "適用"
+  },
+  "cancel": {
+    "message": "キャンセル"
+  },
+  "ok": {
+    "message": "OK"
+  },
+  "searchTooltip": {
+    "message": "ハイライト検索"
+  },
+  "searchPlaceholder": {
+    "message": "検索..."
+  },
+  "sortNewestFirst": {
+    "message": "時間順ソート（新しい順）"
+  },
+  "sortOldestFirst": {
+    "message": "時間順ソート（古い順）"
+  },
+  "shortcutsSettingsTitle": {
+    "message": "キーボードショートカット設定"
+  },
+  "shortcutsDescription": {
+    "message": "テキストをさまざまな色でハイライトするためのキーボードショートカットをカスタマイズします。"
+  },
+  "chromeShortcutsInfo": {
+    "message": "Chromeでキーボードショートカットをカスタマイズするには:<br/>1. 下の「Chromeショートカットを開く」ボタンをクリックするか<br/>2. <strong>chrome://extensions/shortcuts</strong>に移動<br/>3. 「Marks: Text Highlighter」を見つけてショートカットをカスタマイズします"
+  },
+  "firefoxShortcutsInfo": {
+    "message": "Firefoxでキーボードショートカットをカスタマイズするには:<br/>1. <strong>about:addons</strong>に移動<br/>2. 歯車アイコンをクリックして「拡張機能のショートカットを管理」を選択<br/>3. 「Marks: Text Highlighter」を見つけてショートカットをカスタマイズします"
+  },
+  "openChromeShortcuts": {
+    "message": "Chromeショートカットを開く"
+  },
+  "backToPopup": {
+    "message": "ポップアップに戻る"
+  },
+  "notSet": {
+    "message": "未設定"
+  },
+  "chromeUpdateRequired": {
+    "message": "お使いのChromeバージョンは、プログラムによるショートカットの更新をサポートしていない可能性があります。chrome://extensions/shortcutsを使用してショートカットをカスタマイズしてください。"
+  },
+  "keyboardShortcuts": {
+  },
+  "highlightWithCustom1": {
+    "message": "Highlight with Custom Color 1"
+  },
+  "highlightWithCustom2": {
+    "message": "Highlight with Custom Color 2"
+  },
+  "highlightWithCustom3": {
+    "message": "Highlight with Custom Color 3"
+  },
+  "highlightWithCustom4": {
+    "message": "Highlight with Custom Color 4"
+  },
+  "highlightWithCustom5": {
+    "message": "Highlight with Custom Color 5"
+    "message": "キーボードショートカット"
+  }
+  },
+  "colorPickerTitle": {
+    "message": "Custom Color Picker"
+  },
+  "createCustomColor": {
+    "message": "Create Custom Color"
+  },
+  "redChannel": {
+    "message": "Red"
+  },
+  "greenChannel": {
+    "message": "Green"
+  },
+  "blueChannel": {
+    "message": "Blue"
+  },
+  "addColorButton": {
+    "message": "Add This Color"
+  },
+  "resetButton": {
+    "message": "Reset"
+  },
+  "savedCustomColors": {
+    "message": "Your Custom Colors"
+  },
+  "noCustomColorsYet": {
+    "message": "No custom colors saved yet. Create one using the controls on the left!"
+  },
+  "presetColors": {
+    "message": "Extreme Preset Colors"
+  },
+  "manageCustomColors": {
+    "message": "Manage Custom Colors"
+  }
+}
