@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="colorPickerTitle">Custom Color Picker</title>
+    <link rel="stylesheet" href="color-picker.css" />
+  </head>
+  <body class="preload">
+    <h1 data-i18n="colorPickerTitle">Custom Color Picker</h1>
+
+    <div class="container">
+      <!-- Left side: Color creator -->
+      <div class="color-creator">
+        <h2 data-i18n="createCustomColor">Create Custom Color</h2>
+        
+        <!-- HSV Picker -->
+        <div class="hsv-picker">
+          <div class="hue-slider-container">
+            <div class="hue-slider" id="hueSlider">
+              <div class="hue-handle" id="hueHandle"></div>
+            </div>
+          </div>
+          
+          <div class="saturation-value-picker" id="svPicker">
+            <div class="sv-handle" id="svHandle"></div>
+          </div>
+          
+          <div class="color-preview-container">
+            <div class="color-preview" id="colorPreview"></div>
+            <span class="color-hex" id="colorHex">#FF6B6B</span>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button id="add-color-btn" class="btn btn-primary" data-i18n="addColorButton">Add This Color</button>
+          <button id="reset-btn" class="btn btn-secondary" data-i18n="resetButton">Reset</button>
+        </div>
+
+        <!-- Preset colors -->
+        <div class="preset-section">
+          <h3 data-i18n="presetColors">Soothing Preset Colors</h3>
+          <div class="preset-grid" id="presetGrid">
+            <!-- Preset colors will be added by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Saved custom colors -->
+      <div class="saved-colors">
+        <h2 data-i18n="savedCustomColors">Your Custom Colors</h2>
+        <div class="color-limit-info" id="colorLimitInfo"></div>
+        <div class="custom-colors-grid" id="customColorsGrid">
+          <!-- Custom colors will be populated by JavaScript -->
+        </div>
+        <div id="no-colors-message" class="no-colors-message" data-i18n="noCustomColorsYet">
+          No custom colors saved yet. Create one using the controls on the left!
+        </div>
+      </div>
+    </div>
+
+    <script src="color-picker.js"></script>
+  </body>
+</html>
