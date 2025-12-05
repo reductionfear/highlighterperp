@@ -55,10 +55,6 @@ function createHighlightControls() {
   const colorButtonsContainer = document.createElement('div');
   colorButtonsContainer.className = 'text-highlighter-color-buttons';
   currentColors.forEach((colorInfo, idx) => {
-    // Insert a separator after the 5 default colors (only if custom colors exist)
-    if (idx === 5 && currentColors.length > 5) {
-      appendColorSeparator(colorButtonsContainer);
-    }
     const colorButton = createColorButton(colorInfo);
     colorButtonsContainer.appendChild(colorButton);
   });
@@ -134,43 +130,60 @@ let currentCloseHandler = null;
 
 // 공통 색상 피커 UI 생성 함수
 function createColorPickerUI() {
-  // 색상 프리셋 배열 - Organized by category
+  // 색상 프리셋 배열 - Organized by category with soothing, calming colors
   const colorCategories = {
-    metallic: [
-      '#FFD700', // Gold
-      '#C0C0C0', // Silver
-      '#CD7F32', // Bronze
-      '#B87333', // Copper
-      '#E5E4E2'  // Platinum
+    softPastels: [
+      '#E6E6FA', // Lavender
+      '#F0FFF0', // Honeydew
+      '#FFE4E1', // Misty Rose
+      '#E0FFFF', // Light Cyan
+      '#FFF0F5'  // Lavender Blush
     ],
-    superBright: [
-      '#FF0099', // Hot Pink
-      '#00FF00', // Lime Green
-      '#00FFFF', // Cyan
-      '#FF00FF', // Magenta
-      '#FFFF00'  // Yellow
+    calmingBlues: [
+      '#B0E0E6', // Powder Blue
+      '#87CEEB', // Sky Blue
+      '#ADD8E6', // Light Blue
+      '#AFEEEE', // Pale Turquoise
+      '#E0F7FA'  // Light Cyan Tint
     ],
-    glow: [
-      '#39FF14', // Neon Green
-      '#FF073A', // Neon Red
-      '#FE4164', // Neon Pink
-      '#08F7FE', // Neon Blue
-      '#FFF01F'  // Neon Yellow
+    gentleGreens: [
+      '#98FB98', // Pale Green
+      '#90EE90', // Light Green
+      '#F5FFFA', // Mint Cream
+      '#BDFCC9', // Seafoam
+      '#C8E6C9'  // Soft Sage
     ],
-    standard: [
-      '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
-      '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9',
-      '#F39C12', '#E74C3C', '#9B59B6', '#3498DB', '#1ABC9C',
-      '#2ECC71', '#F1C40F', '#E67E22', '#FF90A0', '#A8E6CF'
+    warmSoothing: [
+      '#FFDAB9', // Peach Puff
+      '#FFE4C4', // Bisque
+      '#FFEFD5', // Papaya Whip
+      '#FFF8DC', // Cornsilk
+      '#FFFACD'  // Lemon Chiffon
+    ],
+    mutedTones: [
+      '#D8BFD8', // Thistle
+      '#DDA0DD', // Plum (light)
+      '#F5DEB3', // Wheat
+      '#FAFAD2', // Light Goldenrod
+      '#E8E8E8'  // Soft Gray
+    ],
+    gentlePinks: [
+      '#FFB6C1', // Light Pink
+      '#FFC0CB', // Pink
+      '#FFD1DC', // Blush Pink
+      '#FFCCE5', // Soft Rose
+      '#FCE4EC'  // Pale Pink
     ]
   };
   
   // Flatten all colors for the grid
   const presetColors = [
-    ...colorCategories.metallic,
-    ...colorCategories.superBright,
-    ...colorCategories.glow,
-    ...colorCategories.standard
+    ...colorCategories.softPastels,
+    ...colorCategories.calmingBlues,
+    ...colorCategories.gentleGreens,
+    ...colorCategories.warmSoothing,
+    ...colorCategories.mutedTones,
+    ...colorCategories.gentlePinks
   ];
   
   // 커스텀 색상 선택기 생성
@@ -191,17 +204,7 @@ function createColorPickerUI() {
     const colorDiv = document.createElement('div');
     colorDiv.className = 'color-preset';
     
-    // Add special effects based on color category
-    if (index < 5) {
-      // Metallic colors
-      colorDiv.classList.add('metallic-effect');
-    } else if (index < 10) {
-      // Super bright colors
-      colorDiv.classList.add('bright-effect');
-    } else if (index < 15) {
-      // Glow colors
-      colorDiv.classList.add('glow-effect');
-    }
+    // Soothing pastel colors don't need special effects
     
     colorDiv.style.backgroundColor = color;
     colorDiv.dataset.color = color;
@@ -592,9 +595,6 @@ function refreshHighlightControlsColors() {
 
   // Re-create color buttons
   currentColors.forEach((colorInfo, idx) => {
-    if (idx === 5 && currentColors.length > 5) {
-      appendColorSeparator(colorButtonsContainer);
-    }
     const colorButton = createColorButton(colorInfo);
     colorButtonsContainer.appendChild(colorButton);
   });
