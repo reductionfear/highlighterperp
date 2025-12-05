@@ -1,10 +1,5 @@
-const COLORS = [
-  { id: 'yellow', nameKey: 'yellowColor', color: '#FFFF00' },
-  { id: 'green', nameKey: 'greenColor', color: '#AAFFAA' },
-  { id: 'blue', nameKey: 'blueColor', color: '#AAAAFF' },
-  { id: 'pink', nameKey: 'pinkColor', color: '#FFAAFF' },
-  { id: 'orange', nameKey: 'orangeColor', color: '#FFAA55' }
-];
+// Default colors removed - users start with an empty color palette
+const COLORS = [];
 
 // Cross-browser compatibility - use chrome API in Chrome, browser API in Firefox
 const browserAPI = (() => {
@@ -47,7 +42,7 @@ async function getCurrentShortcuts() {
 // Mutable copy of default COLORS to manage current color state without mutating the constant
 let currentColors = [...COLORS];
 
-// Load custom user-defined colors from local storage and merge into COLORS
+// Load custom user-defined colors from local storage
 async function loadCustomColors() {
   try {
     const result = await browserAPI.storage.local.get(['customColors']);
@@ -60,9 +55,6 @@ async function loadCustomColors() {
         c.colorNumber = index + 1;
         needsUpdate = true;
       }
-      if (!currentColors.some(existing => existing.color.toLowerCase() === c.color.toLowerCase())) {
-        currentColors.push(c);
-      }
     });
     
     // Update storage if we added numbers to existing colors
@@ -70,6 +62,9 @@ async function loadCustomColors() {
       await browserAPI.storage.local.set({ customColors });
       debugLog('Updated custom colors with numbers:', customColors);
     }
+    
+    // Set currentColors to the loaded custom colors
+    currentColors = customColors;
     
     if (customColors.length) {
       debugLog('Loaded custom colors from storage.local:', customColors);
@@ -110,16 +105,18 @@ async function createOrUpdateContextMenus() {
   // 단축키 정보 저장
   storedShortcuts = { ...commandShortcuts };
 
-  for (const color of currentColors) {
-    let commandName = `highlight_${color.id}`;
+  for (let i = 0; i < currentColors.length; i++) {
+    const color = currentColors[i];
+    let commandName = '';
     
-    // Map custom colors to custom command slots
-    if (color.id.startsWith('custom_')) {
-      const customColors = currentColors.filter(c => c.id.startsWith('custom_'));
-      const customIndex = customColors.indexOf(color);
-      if (customIndex >= 0 && customIndex < 5) {
-        commandName = `highlight_custom_${customIndex + 1}`;
-      }
+    // Map color position to keyboard shortcuts
+    // First 5 positions map to the original highlight_yellow, etc. shortcuts
+    // Positions 6-10 map to highlight_custom_1 through highlight_custom_5
+    if (i < 5) {
+      const legacyCommands = ['highlight_yellow', 'highlight_green', 'highlight_blue', 'highlight_pink', 'highlight_orange'];
+      commandName = legacyCommands[i];
+    } else if (i < 10) {
+      commandName = `highlight_custom_${i - 4}`;
     }
     
     const shortcutDisplay = commandShortcuts[commandName] || '';
@@ -243,33 +240,48 @@ browserAPI.commands.onCommand.addListener(async (command) => {
   if (activeTab) {
     let targetColor = null;
     // Determine color based on shortcut
+    // Since default colors are removed, shortcuts map to color positions in currentColors
     switch (command) {
       case 'highlight_yellow':
-        targetColor = currentColors.find(c => c.id === 'yellow')?.color;
+        // Maps to position 1 (first color)
+        if (currentColors.length >= 1) {
+          targetColor = currentColors[0]?.color;
+        }
         break;
       case 'highlight_green':
-        targetColor = currentColors.find(c => c.id === 'green')?.color;
+        // Maps to position 2 (second color)
+        if (currentColors.length >= 2) {
+          targetColor = currentColors[1]?.color;
+        }
         break;
       case 'highlight_blue':
-        targetColor = currentColors.find(c => c.id === 'blue')?.color;
+        // Maps to position 3 (third color)
+        if (currentColors.length >= 3) {
+          targetColor = currentColors[2]?.color;
+        }
         break;
       case 'highlight_pink':
-        targetColor = currentColors.find(c => c.id === 'pink')?.color;
+        // Maps to position 4 (fourth color)
+        if (currentColors.length >= 4) {
+          targetColor = currentColors[3]?.color;
+        }
         break;
       case 'highlight_orange':
-        targetColor = currentColors.find(c => c.id === 'orange')?.color;
+        // Maps to position 5 (fifth color)
+        if (currentColors.length >= 5) {
+          targetColor = currentColors[4]?.color;
+        }
         break;
       case 'highlight_custom_1':
       case 'highlight_custom_2':
       case 'highlight_custom_3':
       case 'highlight_custom_4':
       case 'highlight_custom_5':
-        // Extract custom color slot number (1-5)
+        // Extract custom color slot number (1-5) and map to positions 6-10
         const slotNum = parseInt(command.replace('highlight_custom_', ''));
-        // Get custom colors (starting from index 5, after default colors)
-        const customColors = currentColors.filter(c => c.id.startsWith('custom_'));
-        if (customColors.length >= slotNum) {
-          targetColor = customColors[slotNum - 1]?.color;
+        const colorIndex = 4 + slotNum; // Maps to positions 6-10 (index 5-9)
+        if (currentColors.length >= colorIndex) {
+          targetColor = currentColors[colorIndex - 1]?.color;
         }
         break;
     }
@@ -330,11 +342,11 @@ browserAPI.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 
         // Reset storage and currentColors
         await browserAPI.storage.local.set({ customColors: [] });
-        // Remove custom colors from currentColors array
-        currentColors = currentColors.filter(c => !c.id.startsWith('custom_'));
+        // Reset currentColors to empty array (no default colors anymore)
+        currentColors = [];
         debugLog('Cleared all custom colors');
 
-        // Recreate context menus with default colors only
+        // Recreate context menus
         await createOrUpdateContextMenus();
 
         // Broadcast updated colors to all tabs
@@ -351,6 +363,57 @@ browserAPI.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         return;
       }
 
+      // Handle deleteColor request - delete individual custom color with number reordering
+      if (message.action === 'deleteColor') {
+        const colorId = message.colorId;
+        if (!colorId) {
+          sendResponse({ success: false, error: 'Color ID is required' });
+          return;
+        }
+
+        // Load existing custom colors from storage
+        const stored = await browserAPI.storage.local.get(['customColors']);
+        let customColors = stored.customColors || [];
+        
+        // Find and remove the color
+        const colorIndex = customColors.findIndex(c => c.id === colorId);
+        if (colorIndex === -1) {
+          sendResponse({ success: false, error: 'Color not found' });
+          return;
+        }
+        
+        // Remove the color from array
+        customColors.splice(colorIndex, 1);
+        
+        // Re-assign colorNumber to each remaining color sequentially (index + 1)
+        customColors.forEach((color, index) => {
+          color.colorNumber = index + 1;
+        });
+        
+        // Save updated array back to storage
+        await browserAPI.storage.local.set({ customColors });
+        debugLog('Deleted custom color and reordered:', colorId);
+        
+        // Update currentColors array
+        currentColors = customColors;
+        
+        // Recreate context menus
+        await createOrUpdateContextMenus();
+        
+        // Broadcast updated colors to all tabs
+        const tabs = await browserAPI.tabs.query({});
+        for (const tab of tabs) {
+          try {
+            await browserAPI.tabs.sendMessage(tab.id, { action: 'colorsUpdated', colors: currentColors });
+          } catch (error) {
+            debugLog('Error broadcasting colors to tab:', tab.id, error);
+          }
+        }
+        
+        sendResponse({ success: true, colors: currentColors });
+        return;
+      }
+
       // Handle addColor request from content.js
       if (message.action === 'addColor') {
         const newColorValue = message.color;
@@ -359,16 +422,22 @@ browserAPI.runtime.onMessage.addListener((message, _sender, sendResponse) => {
           return;
         }
 
-        // Load existing custom colors from storage.sync
+        // Load existing custom colors from storage.local
         const stored = await browserAPI.storage.local.get(['customColors']);
         let customColors = stored.customColors || [];
+        
+        // Check if maximum color limit (20) is reached
+        if (customColors.length >= 20) {
+          debugLog('Maximum color limit (20) reached');
+          sendResponse({ success: false, error: 'Maximum color limit reached', colors: currentColors });
+          return;
+        }
 
         // Check duplication by value
-        const exists = [...currentColors, ...customColors].some(c => c.color.toLowerCase() === newColorValue.toLowerCase());
+        const exists = customColors.some(c => c.color.toLowerCase() === newColorValue.toLowerCase());
         if (!exists) {
-          // Calculate the next number for custom color naming
-          const existingCustomCount = currentColors.filter(c => c.id.startsWith('custom_')).length;
-          const colorNumber = existingCustomCount + 1;
+          // Calculate the next number for custom color naming (index + 1)
+          const colorNumber = customColors.length + 1;
           
           const newColorObj = {
             id: `custom_${Date.now()}`,
